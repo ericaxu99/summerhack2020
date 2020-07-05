@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Grocery Tracker Home</h1>
+<p>Welcome to the grocery tracker home page</p>
+{% load static %}
+<img src="{% static 'catalog/images/local_library_model_uml.png' %}" alt="UML diagram"
+    style="width:555px;height:540px;">
+<h2>Dynamic content</h2>
+<p>The tracker has the following record counts:</p>
+<ul>
+    <li><strong>Items:</strong> {{ items }}</li>
+    <li><strong>Budget Remaining:</strong> {{budget_left} }}</li>
+</ul>
+<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+{% endblock %}
