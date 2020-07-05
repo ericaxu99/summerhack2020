@@ -11,6 +11,8 @@ class Consumer(models.Model):
     last_name = models.CharField(
         max_length=100, help_text='Enter your last name')
     budget = models.IntegerField(help_text='Enter your max budget')
+    items=[]
+
     #LIST
     # item_name=Item.item_name
     # item_price=Item.price
@@ -40,6 +42,12 @@ class Store(models.Model):
 
 
 class Item(models.Model):
+    def __init__(self):
+        item_name = models.CharField(max_length=100)
+        price = models.FloatField()
+        category = models.CharField(choices=CATEGORY, max_length=2)
+        description = models.TextField()
+        quantity = models.IntegerField(default=0)
     CATEGORY = (
         ('F', 'FRUIT'),
         ('V', 'VEGETABLES'),
@@ -48,12 +56,8 @@ class Item(models.Model):
         ('C', 'CARBS'),
         ('JF', 'JUNK FOOD'),
     )
-    # field for what store its from?
-    item_name = models.CharField(max_length=100)
-    price = models.FloatField()
-    category = models.CharField(choices=CATEGORY, max_length=2)
-    description = models.TextField()
-    quantity = models.IntegerField(default=0)
+   
+    
 
     class Meta:
         ordering = ['item_name']
